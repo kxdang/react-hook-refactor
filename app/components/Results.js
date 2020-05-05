@@ -8,7 +8,7 @@ import Tooltip from './Tooltip'
 import queryString from 'query-string'
 import { Link } from 'react-router-dom'
 
-function ProfileList ({ profile }) {
+function ProfileList({ profile }) {
   return (
     <ul className='card-list'>
       <li>
@@ -54,10 +54,10 @@ export default class Results extends React.Component {
     error: null,
     loading: true
   }
-  componentDidMount () {
+  componentDidMount() {
     const { playerOne, playerTwo } = queryString.parse(this.props.location.search)
 
-    battle([ playerOne, playerTwo ])
+    battle([playerOne, playerTwo])
       .then((players) => {
         this.setState({
           winner: players[0],
@@ -95,7 +95,7 @@ export default class Results extends React.Component {
             href={winner.profile.html_url}
             name={winner.profile.login}
           >
-            <ProfileList profile={winner.profile}/>
+            <ProfileList profile={winner.profile} />
           </Card>
           <Card
             header={winner.score === loser.score ? 'Tie' : 'Loser'}
@@ -104,13 +104,13 @@ export default class Results extends React.Component {
             name={loser.profile.login}
             href={loser.profile.html_url}
           >
-            <ProfileList profile={loser.profile}/>
+            <ProfileList profile={loser.profile} />
           </Card>
         </div>
         <Link
           to='/battle'
           className='btn dark-btn btn-space'>
-            Reset
+          Reset
         </Link>
       </React.Fragment>
     )
